@@ -30,9 +30,9 @@ small values of n.
 
 Some of the examples of all those types of algorithms (in worst-case scenarios) are mentioned below:
 
-▪ Logarithmic algorithm – O(logn) – Binary Search.
-▪ Linear algorithm – O(n) – Linear Search.
-▪ Superlinear algorithm – O(nlogn) – Heap Sort, Merge Sort.
-▪ Polynomial algorithm – O(n^c) – Strassen’s Matrix Multiplication, Bubble Sort, Selection Sort, Insertion Sort, Bucket Sort.
-▪ Exponential algorithm – O(c^n) – Tower of Hanoi.
-▪ Factorial algorithm – O(n!) – Determinant Expansion by Minors, Brute force Search algorithm for Traveling Salesman Problem.
+* Logarithmic algorithm – `O(logn)` – **Binary Search**.
+* Linear algorithm – `O(n)` – **Linear Search**.
+* Superlinear algorithm – `O(nlogn)` – **Heap Sort, Merge Sort**.
+* Polynomial algorithm – `O(n^c)` – **Strassen’s Matrix Multiplication, Bubble Sort, Selection Sort, Insertion Sort, Bucket Sort**.
+* Exponential algorithm – `O(c^n)` – **Tower of Hanoi**.
+* Factorial algorithm – `O(n!)` – **Determinant Expansion by Minors, Brute force Search algorithm for Traveling Salesman Problem**.
