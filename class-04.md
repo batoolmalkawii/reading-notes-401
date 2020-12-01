@@ -69,3 +69,27 @@ Thread the state through each recursive call so that the current state is part o
 
 ###### Recursive Data Structures in Python
 A data structure is recursive if it can be deﬁned in terms of a smaller version of itself. A list is an example of a recursive data structure. 
+
+## 3. Pytest in Python:
+###### Fixtures:
+In some cases in testing, things are a bit complex. You'll want to have some objects available to all of your tests. Those objects might contain data you want to share across tests, or they might involve the network or filesystem. These are often known as "fixtures" in the testing world, and they take a variety of different forms.
+
+In pytest, you define fixtures using a combination of the `pytest.fixture` decorator, along with a function definition.
+
+* Example: 
+```
+@pytest.fixture
+def simple_file():
+   return StringIO('\n'.join(['abc', 'def', 'ghi', 'jkl']))
+```
+
+###### Coverage:
+checks that your tests have run all of the code.
+So, how can you include code coverage with pytest? 
+It turns out that there's a package called `pytest-cov` on PyPI that you can download and install. 
+Once that's done, you can invoke pytest with the `--cov` option.
+If you don't say anything more than that, you'll get a coverage report for every part of the Python library that your program used,
+so I strongly suggest you provide an argument to `--cov`, specifying which program(s) you want to test.
+And, you should indicate the directory into which the report should be written. So in this case, you would say:
+`pytest --cov=mymul`
+`coverage html`: activate.
