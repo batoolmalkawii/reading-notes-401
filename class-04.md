@@ -68,4 +68,4 @@ When dealing with recursive functions, keep in mind that each recursive call has
 Thread the state through each recursive call so that the current state is part of the current call’s execution context.
 
 ###### Recursive Data Structures in Python
-A data structure is recursive if it can be deﬁned in terms of a smaller version of itself. A list is an example of a recursive data structure. Let me demonstrate.
+A data structure is recursive if it can be deﬁned in terms of a smaller version of itself. A list is an example of a recursive data structure. 
