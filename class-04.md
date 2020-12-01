@@ -84,12 +84,14 @@ def simple_file():
 ```
 
 ###### Coverage:
-checks that your tests have run all of the code.
+Checks that your tests have run all of the code.
 So, how can you include code coverage with pytest? 
 It turns out that there's a package called `pytest-cov` on PyPI that you can download and install. 
 Once that's done, you can invoke pytest with the `--cov` option.
 If you don't say anything more than that, you'll get a coverage report for every part of the Python library that your program used,
 so I strongly suggest you provide an argument to `--cov`, specifying which program(s) you want to test.
 And, you should indicate the directory into which the report should be written. So in this case, you would say:
+
 `pytest --cov=mymul`
+
 `coverage html`: activate.
