@@ -27,3 +27,8 @@ If we accidentally end up trying to traverse on a node that is null, a `NullRefe
 
 When traversing through a linked list, the `Current` node is the most helpful. 
 The `Current` will tell us where exactly in the linked list we are and will allow us to move/traverse forward until we hit the end.
+
+#### Big O
+Regardless of the number of Nodes that this linked list has, it will always be a `O(1)` time and space because it takes the same amount of time to add a new node to the beginning of the list, and no additional resources are being used.
+
+
