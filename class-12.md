@@ -43,9 +43,40 @@ Out[13]:
 2013-01-04  0.721555 -0.706771 -1.039575  0.271860
 2013-01-05 -0.424972  0.567020  0.276232 -1.087401
 ```
->
-"""DataFrame.to_numpy() gives a NumPy representation of the underlying data.
-Note that this can be an expensive operation when your DataFrame has columns with different data types, which comes down to a fundamental difference between pandas and NumPy:
+
+> DataFrame.to_numpy() gives a NumPy representation of the underlying data.
+Note that this can be an expensive operation when your DataFrame has columns with different data types,
+which comes down to a fundamental difference between pandas and NumPy:
 NumPy arrays have one dtype for the entire array, 
-while pandas DataFrames have one dtype per column. When you call DataFrame.to_numpy(), pandas will find the NumPy dtype that can hold all of the dtypes in the DataFrame. 
+while pandas DataFrames have one dtype per column. When you call DataFrame.to_numpy(), 
+pandas will find the NumPy dtype that can hold all of the dtypes in the DataFrame. 
 This may end up being object, which requires casting every value to a Python object.
+>
+
+
+#### Getting
+* Selecting a single column, which yields a Series, equivalent to df.A:
+```
+In [23]: df['A']
+```
+
+* Selecting via [], which slices the rows.
+```
+In [24]: df[0:3]
+```
+* Selection by label.
+* Selection by position.
+
+#### Setting:
+Setting a new column automatically aligns the data by the indexes.
+```
+In [45]: s1 = pd.Series([1, 2, 3, 4, 5, 6], index=pd.date_range('20130102', periods=6))
+```
+
+#### Missing data:
+pandas primarily uses the value np.nan to represent missing data. It is by default not included in computations. See the Missing Data section.
+
+Reindexing allows you to change/add/delete the index on a specified axis. This returns a copy of the data.
+```
+In [55]: df1 = df.reindex(index=dates[0:4], columns=list(df.columns) + ['E'])
+```
