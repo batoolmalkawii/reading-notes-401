@@ -3,7 +3,7 @@
 ## Linear Regression:
 
 
-`Scikit-learn` is a powerful Python module for machine learning. It contains function for `regression`, `classification`, `clustering`, `model selection` and `dimensionality reduction`. Today, I will explore the sklearn.linear_model module which contains “methods intended for regression in which the target value is expected to be a linear combination of the input variables”.
+`Scikit-learn` is a powerful Python module for machine learning. It contains function for `regression`, `classification`, `clustering`, `model selection` and `dimensionality reduction`. 
 
 #### Linear regression in python: implementing linear regression in Python using Scikit-learn.
 
