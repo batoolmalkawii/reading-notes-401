@@ -1,64 +1,76 @@
 # Web Scraping
 
-Web scraping, web harvesting, or web data extraction is data scraping used for extracting data from websites. 
-Web scraping software may access the World Wide Web directly using the Hypertext Transfer Protocol, or through a web browser.
-While web scraping can be done manually by a software user, the term typically refers to automated processes implemented using a bot or web crawler.
-It is a form of copying, in which specific data is gathered and copied from the web, typically into a central local database or spreadsheet, for later retrieval or analysis.
+
+### 1. What is Web Scraping?
+Web scraping is an automated method used to extract large amounts of data from websites. 
+The data on the websites are unstructured. Web scraping helps collect these unstructured data and store it in a structured form. 
+There are different ways to scrape websites such as online Services, APIs or writing your own code.
 
 
-Web scraping is used for contact scraping, and as a component of applications used for web indexing, web mining and data mining, online price change monitoring and price comparison, 
-product review scraping (to watch the competition), gathering real estate listings, weather data monitoring, website change detection,
-research, tracking online presence and reputation, web mashup and, web data integration.
+### 2. Why is Python Good for Web Scraping?
+  * Ease of Use.
+  * Large Collection of Libraries.
+  * Dynamically typed.
+  * Easily Understandable Syntax.
+  * Small code, large task.
+  * Community.
+  
+### 3. How Do You Scrape Data From A Website?
+  a. Find the URL that you want to scrape
+  b. Inspecting the Page
+  c. Find the data you want to extract
+  d. Write the code
+  e. Run the code and extract the data
+  f. Store the data in the required format 
+  
+### 4. Libraries used for Web Scraping 
+  * `Selenium`: Selenium is a web testing library. It is used to automate browser activities.
+  * `BeautifulSoup`: Beautiful Soup is a Python package for parsing HTML and XML documents. It creates parse trees that is helpful to extract the data easily.
+  * `Pandas`: Pandas is a library used for data manipulation and analysis. It is used to extract the data and store it in the desired format. 
+  
+### Example: Scraping Flipkart Website
 
-Web pages are built using text-based mark-up languages (HTML and XHTML), and frequently contain a wealth of useful data in text form.
-However, most web pages are designed for human end-users and not for ease of automated use.
-As a result, specialized tools and software have been developed to facilitate the scraping of web pages.
+* Step 1: Find the URL that you want to scrape
+```
+ https://www.flipkart.com/laptops/~buyback-guarantee-on-laptops-/pr?sid=6bo%2Cb5g&uniqBStoreParam1=val1&wid=11.productCard.PMU_V2.
+ ```
+ 
+* Step 2: Inspecting the Page
 
+* Step 3: Find the data you want to extract
 
-### Techniques
-> Web scraping is the process of automatically mining data or collecting information from the World Wide Web. 
-> It is a field with active developments sharing a common goal with the semantic web vision, an ambitious initiative that still requires breakthroughs in text processing, 
-> semantic understanding, artificial intelligence and human-computer interactions. Current web scraping solutions range from the ad-hoc, requiring human effort,
-> to fully automated systems that are able to convert entire web sites into structured information, with limitations.
+* Step 4: Write the code
+```
+from selenium import webdriver
+from BeautifulSoup import BeautifulSoup
+import pandas as pd
+```
+```
+driver = webdriver.Chrome("/usr/lib/chromium-browser/chromedriver")
+```
+```
+products=[] #List to store name of the product
+prices=[] #List to store price of the product
+ratings=[] #List to store rating of the product
+driver.get("<a href="https://www.flipkart.com/laptops/">https://www.flipkart.com/laptops/</a>~buyback-guarantee-on-laptops-/pr?sid=6bo%2Cb5g&amp;amp;amp;amp;amp;amp;amp;amp;amp;uniq")
+```
+```
+content = driver.page_source
+soup = BeautifulSoup(content)
+for a in soup.findAll('a',href=True, attrs={'class':'_31qSD5'}):
+name=a.find('div', attrs={'class':'_3wU53n'})
+price=a.find('div', attrs={'class':'_1vC4OE _2rQ-NK'})
+rating=a.find('div', attrs={'class':'hGSR34 _2beYZw'})
+products.append(name.text)
+prices.append(price.text)
+ratings.append(rating.text) 
+```
 
-1. Human copy-and-paste
-The simplest form of web scraping is manually copying and pasting data from a web page into a text file or spreadsheet. 
-Sometimes even the best web-scraping technology cannot replace a human's manual examination and copy-and-paste, 
-and sometimes this may be the only workable solution when the websites for scraping explicitly set up barriers to prevent machine automation.
+* Step 5: Run the code and extract the data
 
-2. Text pattern matching
-A simple yet powerful approach to extract information from web pages can be based on the UNIX grep command
-or regular expression-matching facilities of programming languages (for instance Perl or Python).
+* Step 6: Store the data in a required format
+```
+df = pd.DataFrame({'Product Name':products,'Price':prices,'Rating':ratings}) 
+df.to_csv('products.csv', index=False, encoding='utf-8')
+```
 
-3. HTTP programming
-Static and dynamic web pages can be retrieved by posting HTTP requests to the remote web server using socket programming.
-
-4. HTML parsing
-Many websites have large collections of pages generated dynamically from an underlying structured source like a database. 
-Data of the same category are typically encoded into similar pages by a common script or template. 
-In data mining, a program that detects such templates in a particular information source, extracts its content and translates it into a relational form, is called a wrapper.
-Wrapper generation algorithms assume that input pages of a wrapper induction system conform to a common template and that they can be easily identified in terms of a URL common scheme.
-Moreover, some semi-structured data query languages, such as XQuery and the HTQL, can be used to parse HTML pages and to retrieve and transform page content.
-
-5. DOM parsing
-By embedding a full-fledged web browser, such as the Internet Explorer or the Mozilla browser control, programs can retrieve the dynamic content generated by client-side scripts.
-These browser controls also parse web pages into a DOM tree, based on which programs can retrieve parts of the pages. 
-Languages such as Xpath can be used to parse the resulting DOM tree.
-
-6. Vertical aggregation
-There are several companies that have developed vertical specific harvesting platforms. 
-These platforms create and monitor a multitude of "bots" for specific verticals with no "man in the loop" (no direct human involvement),
-and no work related to a specific target site. 
-The preparation involves establishing the knowledge base for the entire vertical and then the platform creates the bots automatically. 
-The platform's robustness is measured by the quality of the information it retrieves (usually number of fields) 
-and its scalability (how quick it can scale up to hundreds or thousands of sites).
-This scalability is mostly used to target the Long Tail of sites that common aggregators find complicated or too labor-intensive to harvest content from.
-
-7. Semantic annotation recognizing
-The pages being scraped may embrace metadata or semantic markups and annotations, which can be used to locate specific data snippets. 
-If the annotations are embedded in the pages, as Microformat does, this technique can be viewed as a special case of DOM parsing.
-In another case, the annotations, organized into a semantic layer, are stored and managed separately from the web pages,
-so the scrapers can retrieve data schema and instructions from this layer before scraping the pages.
-
-8. Computer vision web-page analysis
-There are efforts using machine learning and computer vision that attempt to identify and extract information from web pages by interpreting pages visually as a human being might.[5]
