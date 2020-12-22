@@ -1,7 +1,7 @@
 # Automation
 
 
-## Regulaer Expressions in Python
+## Regular Expressions in Python
 Regular Expressions, often shortened as regex, are a sequence of characters used to check whether a pattern exists in a given text (string) or not.
 In Python, regular expressions are supported by the re module. 
 That means that if you want to start using them in your Python scripts, you have to import this module with the help of import:
