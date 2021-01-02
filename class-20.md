@@ -38,6 +38,7 @@ Clickjacking Cross-site scripting Cross Site Request Forgery (CSRF) SQL injectio
 ## **Path converters**
 
 The following path converters are available by default:
+
 '|'
 --------|--------
 str | Matches any non-empty string, excluding the path separator, '/'. This is the default if a converter isn’t included in the expression.
