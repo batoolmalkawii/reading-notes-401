@@ -35,7 +35,7 @@ Clickjacking Cross-site scripting Cross Site Request Forgery (CSRF) SQL injectio
 
 
 
-**Path converters**
+## **Path converters**
 
 The following path converters are available by default:
 '|'
