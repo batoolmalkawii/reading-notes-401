@@ -76,4 +76,3 @@ You will be required to traverse through a graph. The traversals itself are like
     Let’s look at the visual for a depth-first traversal.
 
 
-[For more information(SSH)](https://codefellows.github.io/common_curriculum/data_structures_and_algorithms/Code_401/class-35/resources/graphs.html)
